@@ -1,0 +1,165 @@
+﻿@page
+@model AccueilModel
+@{
+    ViewData["Title"] = "Accueil";
+}
+
+<div class="flex justify-between items-center p-4 relative">
+    <form method="get" class="flex items-center space-x-2">
+        <div class="relative">
+            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                </svg>
+            </div>
+            <input type="search" name="searchTerm" id="default-search" class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Rechercher par titre, auteur ou catégorie" value="@Model.SearchTerm" />
+        </div>
+        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">Rechercher</button>
+    </form>
+
+    <div class="flex items-center">
+        <span class="mr-2">Notifications:</span>
+        <a href="/Notifications" title="Voir les notifications" class="relative" aria-label="Voir les notifications">
+            <i class="fas fa-bell text-gray-600 text-xl">
+                @if (Model.NombreNotifications > 0)
+                {
+                    <span class="absolute top-0 right-0 transform translate-x-2 -translate-y-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                        @Model.NombreNotifications
+                    </span>
+                }
+            </i>
+        </a>
+    </div>
+</div>
+
+@if (Model.Livres != null && Model.Livres.Any())
+{
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-4">
+        @foreach (var livre in Model.Livres)
+        {
+            <div class="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 h-auto flex flex-col"
+                 data-id="@livre.Id"
+                 data-titre="@livre.Titre"
+                 data-auteur="@livre.Auteur"
+                 data-categorie="@livre.Categorie"
+                 data-anneepublication="@livre.AnneePublication"
+                 data-prix="@livre.Prix"
+                 data-disponiblepourachat="@livre.DisponiblePourAchat"
+                 data-quantitedisponible="@livre.QuantiteDisponible"
+                 data-quantitetotale="@livre.QuantiteTotale"
+                 data-cheminimage="@livre.CheminImage"
+                 onclick="ouvrirModal(this)"
+                 tabindex="0" role="button" aria-label="Voir détails du livre : @livre.Titre">
+                <img src="@(!string.IsNullOrEmpty(livre.CheminImage) ? livre.CheminImage : Url.Content("~/images/default-book.png"))"
+                     alt="Image de @livre.Titre"
+                     class="w-full h-48 object-cover">
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <h5 class="text-lg font-bold text-gray-800 truncate">@livre.Titre</h5>
+                    <p class="text-gray-600">Auteur : @livre.Auteur</p>
+                    @if (livre.DisponiblePourAchat)
+                    {
+                        <p class="text-green-500 font-medium">Disponible pour achat</p>
+                    }
+                    else
+                    {
+                        <p class="text-red-500 font-medium">Non disponible pour achat</p>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p class="text-gray-600 text-center p-4">Aucun livre disponible pour le moment.</p>
+}
+
+<div id="livreModal"
+     class="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center hidden transition-opacity duration-300 ease-in-out"
+     aria-hidden="true"
+     role="dialog"
+     aria-labelledby="modalTitre">
+    <div class="bg-white rounded-lg shadow-lg w-11/12 max-w-lg relative transform transition-transform duration-300 ease-in-out scale-95">
+        <!-- Bouton de fermeture -->
+        <button class="absolute top-2 right-2 text-gray-400 hover:text-gray-800 focus:outline-none focus:ring focus:ring-gray-300 p-2 rounded-full"
+                onclick="fermerModal()"
+                aria-label="Fermer le modal">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+
+        <!-- Contenu du modal -->
+        <img id="modalImage" src="" alt="Image du livre" class="w-48 h-64 object-cover mx-auto mt-4 rounded-lg shadow-md">
+        <div class="p-6">
+            <h2 id="modalTitre" class="text-2xl font-bold text-gray-800 mb-2"></h2>
+            <p id="modalAuteur" class="text-gray-600 mb-2"></p>
+            <p id="modalCategorie" class="text-gray-600 mb-2"></p>
+            <p id="modalAnneePublication" class="text-gray-600 mb-2"></p>
+            <p id="modalPrix" class="text-gray-600 mb-2"></p>
+            <p id="modalDisponiblePourAchat" class="text-gray-600 mb-4"></p>
+
+            <!-- Boutons d'action -->
+            <div class="flex justify-between">
+                <button class="bg-blue-500 text-white py-2 px-4 rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300 transition"
+                        onclick="redirigerVersEmprunt()">
+                    Emprunter
+                </button>
+                <button class="bg-green-500 text-white py-2 px-4 rounded-lg shadow-md hover:bg-green-600 focus:outline-none focus:ring focus:ring-green-300 transition"
+                        onclick="acheterLivre()">
+                    Acheter
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function ouvrirModal(element) {
+        const id = element.getAttribute('data-id');
+        const titre = element.getAttribute('data-titre');
+        const auteur = element.getAttribute('data-auteur');
+        const categorie = element.getAttribute('data-categorie');
+        const anneePublication = element.getAttribute('data-anneepublication');
+        const prix = parseFloat(element.getAttribute('data-prix')).toFixed(2) + '€';
+        const disponiblePourAchat = element.getAttribute('data-disponiblepourachat') === 'true' ? "Oui" : "Non";
+        const cheminImage = element.getAttribute('data-cheminimage') || '@Url.Content("~/images/default-book.png")';
+
+        document.getElementById('modalTitre').textContent = titre;
+        document.getElementById('modalAuteur').textContent = `Auteur : ${auteur}`;
+        document.getElementById('modalCategorie').textContent = `Catégorie : ${categorie}`;
+        document.getElementById('modalAnneePublication').textContent = `Année de publication : ${anneePublication}`;
+        document.getElementById('modalPrix').textContent = `Prix : ${prix}`;
+        document.getElementById('modalDisponiblePourAchat').textContent = `Disponible à l'achat : ${disponiblePourAchat}`;
+        document.getElementById('modalImage').src = cheminImage;
+
+        const modal = document.getElementById('livreModal');
+        modal.classList.remove('hidden');
+        modal.setAttribute('aria-hidden', 'false');
+        modal.querySelector('.transform').classList.remove('scale-95');
+        modal.querySelector('.transform').classList.add('scale-100');
+    }
+
+    function fermerModal() {
+        const modal = document.getElementById('livreModal');
+        modal.querySelector('.transform').classList.remove('scale-100');
+        modal.querySelector('.transform').classList.add('scale-95');
+        setTimeout(() => {
+            modal.classList.add('hidden');
+            modal.setAttribute('aria-hidden', 'true');
+        }, 300);
+    }
+
+    function redirigerVersEmprunt() {
+        const idLivre = document.getElementById('livreModal').getAttribute('data-id');
+        const url = `/Emprunts/Nouveau?LivreId=${idLivre}`;
+        window.location.href = url;
+    }
+
+    function acheterLivre() {
+        const idLivre = document.getElementById('livreModal').getAttribute('data-id');
+        const url = `/Achats/Nouveau?LivreId=${idLivre}`;
+        window.location.href = url;
+    }
+</script>

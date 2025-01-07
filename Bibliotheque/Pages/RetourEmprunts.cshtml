@@ -1,0 +1,82 @@
+﻿@page
+@model Bibliotheque.Pages.RetourEmpruntsModel
+@{
+    ViewData["Title"] = "Gestion des Retours d'Emprunts";
+}
+
+<div class="max-w-7xl mx-auto my-8 px-4">
+    <!-- Titre principal -->
+    <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">@ViewData["Title"]</h1>
+
+    <!-- Message de succès -->
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4 relative" role="alert">
+            <strong class="font-bold">Succès : </strong>
+            <span class="block sm:inline">@TempData["SuccessMessage"]</span>
+        </div>
+    }
+
+    <!-- Tableau des retours d'emprunts -->
+    <div class="overflow-x-auto shadow-md rounded-lg">
+        <table class="w-full text-sm text-left text-gray-600 bg-white">
+            <!-- En-tête du tableau -->
+            <thead class="bg-blue-500 text-white text-center uppercase">
+                <tr>
+                    <th scope="col" class="p-3">Titre du Livre</th>
+                    <th scope="col" class="p-3">Nom du Client</th>
+                    <th scope="col" class="p-3">Date d'Emprunt</th>
+                    <th scope="col" class="p-3">Date Retour Prévue</th>
+                    <th scope="col" class="p-3">En Retard</th>
+                    <th scope="col" class="p-3">Quantité Disponible</th>
+                    <th scope="col" class="p-3">Action</th>
+                </tr>
+            </thead>
+            <!-- Corps du tableau -->
+            <tbody>
+                @foreach (var emprunt in Model.Emprunts)
+                {
+                    <tr class="hover:bg-gray-100 border-b text-center">
+                        <!-- Titre du livre -->
+                        <td class="p-3 font-semibold text-gray-800">@emprunt.Livre.Titre</td>
+                        <!-- Nom du client -->
+                        <td class="p-3">@emprunt.ClientNom</td>
+                        <!-- Date d'emprunt -->
+                        <td class="p-3">@emprunt.DateEmprunt.ToShortDateString()</td>
+                        <!-- Date de retour prévue -->
+                        <td class="p-3">@emprunt.DateRetourPrevue.ToShortDateString()</td>
+                        <!-- Statut de retard -->
+                        <td class="p-3">
+                            @if (emprunt.DateRetourPrevue < DateTime.Now && !emprunt.Retourne)
+                            {
+                                <span class="text-red-500 font-semibold">Oui</span>
+                            }
+                            else
+                            {
+                                <span class="text-green-500 font-semibold">Non</span>
+                            }
+                        </td>
+                        <!-- Quantité disponible -->
+                        <td class="p-3">@emprunt.Livre.QuantiteDisponible</td>
+                        <!-- Actions -->
+                        <td class="p-3">
+                            @if (!emprunt.Retourne)
+                            {
+                                <form method="post" asp-page-handler="RetournerEmprunt" asp-route-id="@emprunt.Id">
+                                    <button type="submit"
+                                            class="bg-green-500 hover:bg-green-600 text-white font-medium py-1 px-3 rounded transition duration-300">
+                                        Marquer comme retourné
+                                    </button>
+                                </form>
+                            }
+                            else
+                            {
+                                <span class="text-gray-500 italic">Déjà retourné</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

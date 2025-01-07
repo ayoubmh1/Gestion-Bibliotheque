@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Bibliotheque</title>
+    <link rel="stylesheet" href="~/css/output.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    @*<link rel="stylesheet" href="~/Bibliotheque.styles.css" asp-append-version="true" />*@
+    <link rel="stylesheet" href="~/css/accueil.css" asp-append-version="true" />
+</head>
+<body class="bg-gray-100 text-gray-900">
+    <header>
+        <nav class="bg-white shadow-md sticky top-0 z-10">
+            <div class="container mx-auto px-4 flex justify-between items-center py-3">
+                <a class="text-2xl font-semibold text-gray-900 hover:text-gray-600" asp-area="" asp-page="/Index">Bibliotheque</a>
+                <button class="block md:hidden text-gray-600 focus:outline-none">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+                <div class="hidden md:flex space-x-8">
+                    <ul class="flex space-x-8">
+                        @*<li class="nav-item">
+                            <a class="nav-link text-gray-900 hover:text-blue-500 transition duration-300" asp-area="" asp-page="/Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-gray-900 hover:text-blue-500 transition duration-300" asp-area="" asp-page="/Privacy">Privacy</a>
+                        </li>*@
+                        <li class="nav-item">
+                            <a class="nav-link text-gray-900 hover:text-blue-500 transition duration-300" asp-area="" asp-page="/Accueil">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-gray-900 hover:text-blue-500 transition duration-300" asp-area="" asp-page="/AjouterLivre">Ajouter Un Livre</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-gray-900 hover:text-blue-500 transition duration-300" asp-area="" asp-page="/Livres">Liste Livres</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-gray-900 hover:text-blue-500 transition duration-300" asp-area="" asp-page="/RetourEmprunts">Retour des emprunts</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container mx-auto px-4 py-6">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    @*<footer class="border-t border-gray-200 text-center text-gray-600 py-4">
+    <div class="container mx-auto">
+    &copy; 2024 - Bibliotheque - <a class="text-blue-600 hover:underline" asp-area="" asp-page="/Privacy">Privacy</a>
+    </div>
+    </footer>*@
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    @*<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/accueil.js" asp-append-version="true"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,63 @@
+﻿@page
+@model Bibliotheque.Pages.LivresModel
+@{
+    ViewData["Title"] = "Liste des Livres";
+}
+
+<div class="max-w-7xl mx-auto my-8 px-4">
+    <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">Liste des Livres</h1>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4 animate__animated animate__fadeInDown" role="alert">
+            <strong class="font-bold">Succès : </strong>
+            <span class="block sm:inline">@TempData["SuccessMessage"]</span>
+        </div>
+    }
+
+    <div class="overflow-x-auto shadow-lg rounded-lg">
+        <table class="w-full border-collapse bg-white text-sm rounded-lg">
+            <thead class="bg-blue-600 text-white">
+                <tr>
+                    <th class="p-3 text-center">Image</th>
+                    <th class="p-3 text-left">Titre</th>
+                    <th class="p-3 text-left">Auteur</th>
+                    <th class="p-3 text-left">Catégorie</th>
+                    <th class="p-3 text-center">Année</th>
+                    <th class="p-3 text-center">Prix (€)</th>
+                    <th class="p-3 text-center">Quantité</th>
+                    <th class="p-3 text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+                @foreach (var livre in Model.Livres)
+                {
+                    <tr class="hover:bg-gray-200 transition duration-300 ease-in-out">
+                        <td class="p-3 text-center">
+                            <div class="inline-block transform hover:scale-105 transition duration-300">
+                                <img src="@livre.CheminImage" alt="@livre.Titre" class="w-16 h-16 object-cover rounded border">
+                            </div>
+                        </td>
+                        <td class="p-3 text-gray-700">@livre.Titre</td>
+                        <td class="p-3 text-gray-700">@livre.Auteur</td>
+                        <td class="p-3 text-gray-700">@livre.Categorie</td>
+                        <td class="p-3 text-center text-gray-700">@livre.AnneePublication</td>
+                        <td class="p-3 text-center font-semibold text-gray-900">@livre.Prix €</td>
+                        <td class="p-3 text-center">@livre.QuantiteDisponible</td>
+                        <td class="p-3 text-center space-x-2">
+                            <a href="/Livres/Details?id=@livre.Id" class="text-blue-600 hover:text-blue-800 font-medium">Voir</a>
+                            <a href="/Livres/Edit?id=@livre.Id" class="text-yellow-600 hover:text-yellow-800 font-medium">Modifier</a>
+                            <form method="post" asp-page-handler="Delete" asp-route-id="@livre.Id" class="inline">
+                                <button type="submit" class="text-red-600 hover:text-red-800 font-medium" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce livre ?');">
+                                    Supprimer
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

@@ -1,0 +1,51 @@
+﻿@page
+@model Bibliotheque.Pages.Emprunts.NouveauEmpruntModel
+@{
+    ViewData["Title"] = "Nouvel Emprunt";
+}
+
+<div class="min-h-screen flex flex-col justify-center items-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+    <div class="bg-white shadow-lg rounded-lg p-8 w-11/12 sm:w-96 transition-transform duration-500 transform hover:scale-105">
+
+        <!-- Message de succès -->
+        @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+        {
+            <div class="mb-6 bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded-lg">
+                <p class="text-center font-semibold">@Model.SuccessMessage</p>
+            </div>
+        }
+
+        <h1 class="text-2xl font-bold text-gray-800 text-center mb-6">Nouvel Emprunt</h1>
+
+        <form method="post" class="space-y-4">
+            <div>
+                <label for="ClientNom" class="block text-gray-700 font-semibold mb-1">Nom du client</label>
+                <input type="text" id="ClientNom"
+                       asp-for="NomClient" required
+                       class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none transition">
+            </div>
+
+            <div>
+                <label for="ClientCin" class="block text-gray-700 font-semibold mb-1">CIN du client</label>
+                <input type="text" id="ClientCin"
+                       asp-for="CinClient" required
+                       class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none transition">
+            </div>
+
+            <div>
+                <label for="DateRetour" class="block text-gray-700 font-semibold mb-1">Date de retour prévue</label>
+                <input type="date" id="DateRetour"
+                       asp-for="DateRetourPrevue" required
+                       value="@Model.DateRetourPrevue.ToString("yyyy-MM-dd")"
+                       class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none transition">
+            </div>
+
+            <button type="submit"
+                    class="w-full bg-indigo-600 text-white font-semibold py-3 rounded-lg shadow-lg hover:bg-indigo-700 transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-300">
+                Valider
+            </button>
+        </form>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>

@@ -1,0 +1,129 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\ayoub\\source\\repos\\Bibliotheque\\Bibliotheque\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Bibliotheque.bundle.scp.css",
+      "PackagePath": "staticwebassets\\Bibliotheque.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\ayoub\\source\\repos\\Bibliotheque\\Bibliotheque\\wwwroot\\css\\accueil.css",
+      "PackagePath": "staticwebassets\\css\\accueil.css"
+    },
+    {
+      "Id": "C:\\Users\\ayoub\\source\\repos\\Bibliotheque\\Bibliotheque\\wwwroot\\css\\input.css",
+      "PackagePath": "staticwebassets\\css\\input.css"
+    },
+    {
+      "Id": "C:\\Users\\ayoub\\source\\repos\\Bibliotheque\\Bibliotheque\\wwwroot\\css\\output.css",
+      "PackagePath": "staticwebassets\\css\\output.css"
+    },
+    {
+      "Id": "C:\\Users\\ayoub\\source\\repos\\Bibliotheque\\Bibliotheque\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Users\\ayoub\\source\\repos\\Bibliotheque\\Bibliotheque\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\ayoub\\source\\repos\\Bibliotheque\\Bibliotheque\\wwwroot\\images\\157993.jpg",
+      "PackagePath": "staticwebassets\\images\\157993.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ayoub\\source\\repos\\Bibliotheque\\Bibliotheque\\wwwroot\\images\\Cien_años_de_soledad_(book_cover,_1967).jpg",
+      "PackagePath": "staticwebassets\\images\\Cien_años_de_soledad_(book_cover,_1967).jpg"
+    },
+    {
+      "Id": "C:\\Users\\ayoub\\source\\repos\\Bibliotheque\\Bibliotheque\\wwwroot\\images\\OIP.jpeg",
+      "PackagePath": "staticwebassets\\images\\OIP.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\ayoub\\source\\repos\\Bibliotheque\\Bibliotheque\\wwwroot\\images\\OIP.jpg",
+      "PackagePath": "staticwebassets\\images\\OIP.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ayoub\\source\\repos\\Bibliotheque\\Bibliotheque\\wwwroot\\images\\Title_page_first_edition_Don_Quijote.jpg",
+      "PackagePath": "staticwebassets\\images\\Title_page_first_edition_Don_Quijote.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ayoub\\source\\repos\\Bibliotheque\\Bibliotheque\\wwwroot\\images\\default-book.png",
+      "PackagePath": "staticwebassets\\images\\default-book.png"
+    },
+    {
+      "Id": "C:\\Users\\ayoub\\source\\repos\\Bibliotheque\\Bibliotheque\\wwwroot\\images\\th.jpg",
+      "PackagePath": "staticwebassets\\images\\th.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ayoub\\source\\repos\\Bibliotheque\\Bibliotheque\\wwwroot\\js\\accueil.js",
+      "PackagePath": "staticwebassets\\js\\accueil.js"
+    },
+    {
+      "Id": "C:\\Users\\ayoub\\source\\repos\\Bibliotheque\\Bibliotheque\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\ayoub\\source\\repos\\Bibliotheque\\Bibliotheque\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\ayoub\\source\\repos\\Bibliotheque\\Bibliotheque\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "C:\\Users\\ayoub\\source\\repos\\Bibliotheque\\Bibliotheque\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "C:\\Users\\ayoub\\source\\repos\\Bibliotheque\\Bibliotheque\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "C:\\Users\\ayoub\\source\\repos\\Bibliotheque\\Bibliotheque\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "C:\\Users\\ayoub\\source\\repos\\Bibliotheque\\Bibliotheque\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "C:\\Users\\ayoub\\source\\repos\\Bibliotheque\\Bibliotheque\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "C:\\Users\\ayoub\\source\\repos\\Bibliotheque\\Bibliotheque\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "C:\\Users\\ayoub\\source\\repos\\Bibliotheque\\Bibliotheque\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\ayoub\\source\\repos\\Bibliotheque\\Bibliotheque\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "C:\\Users\\ayoub\\source\\repos\\Bibliotheque\\Bibliotheque\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "C:\\Users\\ayoub\\source\\repos\\Bibliotheque\\Bibliotheque\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Bibliotheque.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.Bibliotheque.props",
+      "PackagePath": "build\\Bibliotheque.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.Bibliotheque.props",
+      "PackagePath": "buildMultiTargeting\\Bibliotheque.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.Bibliotheque.props",
+      "PackagePath": "buildTransitive\\Bibliotheque.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

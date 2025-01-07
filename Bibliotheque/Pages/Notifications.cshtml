@@ -1,0 +1,61 @@
+﻿@page
+@model NotificationsModel
+@{
+    ViewData["Title"] = "Notifications";
+}
+
+<div class="max-w-7xl mx-auto p-6">
+    <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">Notifications des emprunts dépassés</h1>
+
+    @if (Model.EmpruntsEnRetard != null && Model.EmpruntsEnRetard.Any())
+    {
+        <div class="overflow-x-auto">
+            <table class="table-auto w-full text-left border-collapse shadow-lg rounded-lg overflow-hidden">
+                <thead>
+                    <tr class="bg-blue-500 text-white">
+                        <th class="p-4">Client</th>
+                        <th class="p-4">Livre</th>
+                        <th class="p-4">Date d'emprunt</th>
+                        <th class="p-4">Date prévue de retour</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var emprunt in Model.EmpruntsEnRetard)
+                    {
+                        <tr class="hover:bg-gray-100 transition duration-300">
+                            <td class="p-4 border-b">
+                                <span class="font-semibold text-gray-700">
+                                    @emprunt.ClientNom (@emprunt.ClientCin)
+                                </span>
+                            </td>
+                            <td class="p-4 border-b text-gray-600">@emprunt.Livre.Titre</td>
+                            <td class="p-4 border-b text-gray-600">@emprunt.DateEmprunt.ToString("dd/MM/yyyy")</td>
+                            <td class="p-4 border-b text-gray-600">@emprunt.DateRetourPrevue.ToString("dd/MM/yyyy")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <p class="text-center text-gray-500 text-lg mt-8 animate-pulse">Aucune notification pour le moment.</p>
+    }
+</div>
+<style>
+    @@keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animate-fadeIn {
+        animation: fadeIn 0.8s ease-out;
+    }
+</style>
